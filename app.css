@@ -1582,8 +1582,8 @@ body.session-on .residue-canvas {
   color: #ffffff;
 }
 
-/* —— Narrow screens / phones —— */
-@media (max-width: 640px) {
+/* —— Narrow viewports: phones (incl. landscape), small tablets —— */
+@media (max-width: 900px) {
   :root {
     --landing-letter-size: calc(clamp(8.5px, 3.4vw, 11px) + var(--fs-bump));
     --fs-bump: 2pt;
