@@ -1581,3 +1581,160 @@ body.session-on .residue-canvas {
   background: #000000;
   color: #ffffff;
 }
+
+/* —— Narrow screens / phones —— */
+@media (max-width: 640px) {
+  :root {
+    --landing-letter-size: calc(clamp(8.5px, 3.4vw, 11px) + var(--fs-bump));
+    --fs-bump: 2pt;
+  }
+
+  .view-search.page-landing {
+    padding: 6px 10px max(20px, env(safe-area-inset-bottom));
+    min-height: 100dvh;
+  }
+
+  .landing-main {
+    padding: 6px 0 14px;
+  }
+
+  .qwerty-form {
+    max-width: 100%;
+  }
+
+  .qwerty-stage {
+    min-height: min(26vh, 180px);
+  }
+
+  .search-keyboard-wrap {
+    padding: 0 6px;
+  }
+
+  .search-keyboard-stack,
+  .search-keyboard {
+    max-width: min(100vw - 12px, 520px);
+  }
+
+  .search-keyboard {
+    gap: clamp(10px, 3.2vw, 16px) clamp(14px, 3.8vw, 26px);
+    grid-template-rows: repeat(3, minmax(20px, auto));
+  }
+
+  .search-slot {
+    max-width: 52px;
+    min-height: 52px;
+    padding: 5px;
+  }
+
+  .search-typed-overflow {
+    margin-top: 8px;
+    padding: 5px 6px 7px;
+    min-height: 20px;
+    max-width: min(100vw - 12px, 520px);
+  }
+
+  .qwerty-caret-slot {
+    height: clamp(11px, 2.6vh, 17px);
+  }
+
+  /* Archive viewer + inspect */
+  .archive-viewer-title {
+    padding: 8px 12px 9px;
+    min-height: 2.2em;
+    font-size: calc(10px + var(--fs-bump));
+    letter-spacing: 0.03em;
+  }
+
+  .archive-viewer-footer .archive-viewer-btn {
+    padding: 11px 6px;
+    font-size: calc(9px + var(--fs-bump));
+    letter-spacing: 0.03em;
+  }
+
+  .archive-inspect-hit {
+    font-size: clamp(10px, 3.1vw, 12px);
+    max-width: min(92vw, 280px);
+    padding: 3px 6px;
+    text-underline-offset: 1px;
+  }
+
+  /* Wikipedia session */
+  .session-browser {
+    margin: 0 6px 0;
+  }
+
+  .session-browser-toolbar {
+    gap: 4px;
+    padding: 6px 8px;
+    flex-wrap: wrap;
+  }
+
+  .session-tb-btn {
+    width: 26px;
+    height: 22px;
+    font-size: calc(10px + var(--fs-bump));
+  }
+
+  .session-url-input {
+    padding: 4px 6px;
+    /* ≥16px avoids iOS zoom-on-focus in the address bar field */
+    font-size: max(16px, calc(10px + var(--fs-bump)));
+  }
+
+  .session-url-go {
+    padding: 4px 8px;
+    font-size: calc(9px + var(--fs-bump));
+  }
+
+  .wiki-scroll {
+    padding: 6px 12px 28px;
+  }
+
+  .wiki-article {
+    font-size: calc(11px + var(--fs-bump));
+  }
+
+  /* Polaroid preview modal */
+  .polaroid-overlay {
+    padding: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .polaroid-modal-inner {
+    max-width: min(300px, 92vw);
+  }
+
+  .polaroid-modal {
+    max-width: min(260px, 88vw);
+  }
+
+  .polaroid {
+    padding: 10px;
+    transform: scale(0.9) translateY(18px) rotate(-2deg);
+  }
+
+  .polaroid .caption {
+    padding: 7px 8px 9px;
+    font-size: calc(10px + var(--fs-bump));
+    min-height: 2.75em;
+  }
+
+  .polaroid-actions {
+    max-width: min(260px, 88vw);
+    margin-top: 10px;
+  }
+
+  .polaroid-action {
+    padding: 9px 8px;
+    font-size: calc(9px + var(--fs-bump));
+  }
+
+  .stack-dock {
+    right: max(10px, env(safe-area-inset-right));
+    bottom: max(10px, env(safe-area-inset-bottom));
+  }
+
+  .stack-mini-panel {
+    width: min(280px, calc(100vw - 20px));
+    max-height: min(48vh, 360px);
+  }
+}
