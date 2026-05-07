@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>trace</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body class="view-mode-scroll">
+    <main class="app-main" id="appMain">
+      <section id="viewSearch" class="view view-search page-landing" aria-label="Search">
+        <div class="landing-main">
+          <form class="qwerty-form" id="searchForm" autocomplete="off">
+            <label class="visually-hidden" for="searchQuery">search wikipedia</label>
+            <div class="qwerty-stage" id="homeCuriousZone" aria-label="Search">
+              <div class="search-keyboard-wrap">
+                <div class="search-keyboard-stack" id="searchKeyboardStack">
+                  <svg
+                    class="search-keyboard-lines"
+                    id="searchKeyboardLines"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  ></svg>
+                  <div class="search-keyboard" id="searchKeyboard" aria-hidden="true"></div>
+                </div>
+                <div class="search-typed-overflow" id="searchTypedOverflow" aria-hidden="true"></div>
+              </div>
+              <input
+                type="text"
+                id="searchQuery"
+                class="qwerty-input"
+                placeholder=""
+                autocomplete="off"
+                enterkeyhint="search"
+                aria-label="Search"
+                spellcheck="false"
+              />
+              <div class="qwerty-caret-slot" id="qwertyCaretSlot">
+                <span class="qwerty-caret" id="qwertyCaret" aria-hidden="true"></span>
+              </div>
+            </div>
+            <button type="submit" class="visually-hidden" id="beginSession">Search</button>
+          </form>
+        </div>
+
+        <div class="scroll-hint" id="scrollHint" aria-hidden="true">
+          <div class="scroll-hint-finger" title="Scroll for history">
+            <span class="scroll-hint-ink" aria-hidden="true"></span>
+          </div>
+          <p class="scroll-hint-date" id="scrollHintDate"></p>
+        </div>
+      </section>
+
+      <div
+        id="trackShell"
+        class="track-shell track-shell--page hidden"
+        aria-hidden="true"
+      >
+        <div id="trackStage" class="track-stage">
+          <div class="track-paper-layer" aria-hidden="true"></div>
+          <canvas id="faintBgCanvas" class="faint-bg-canvas" aria-hidden="true"></canvas>
+          <div class="session-browser">
+            <div class="session-browser-toolbar">
+              <button type="button" class="session-tb-btn" id="wikiBtnBack" aria-label="Back" title="Back">
+                ←
+              </button>
+              <button type="button" class="session-tb-btn" id="wikiBtnFwd" aria-label="Forward" title="Forward">
+                →
+              </button>
+              <button type="button" class="session-tb-btn" id="wikiBtnRandom" title="Random article">◌</button>
+              <form class="session-url-form" id="wikiNavForm" autocomplete="off">
+                <label class="visually-hidden" for="wikiUrlInput">article</label>
+                <input
+                  type="text"
+                  id="wikiUrlInput"
+                  class="session-url-input"
+                  placeholder="Title or search…"
+                  spellcheck="false"
+                />
+                <button type="submit" class="session-url-go">open</button>
+              </form>
+            </div>
+            <div class="session-wiki-viewport" id="wikiViewport">
+              <div class="wiki-status" id="wikiStatus" aria-live="polite"></div>
+              <div class="wiki-body">
+                <canvas id="residueCanvas" class="residue-canvas" aria-hidden="true"></canvas>
+                <div class="wiki-scroll" id="wikiScroll">
+                  <article class="wiki-article" id="wikiArticle" aria-label="Wikipedia article"></article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="session-footer">
+          <button type="button" class="session-footer-btn" id="endSession">end session</button>
+        </footer>
+      </div>
+
+      <section
+        id="viewGallery"
+        class="view view-gallery page-history"
+        aria-label="History"
+      >
+        <div id="galleryRoot" class="gallery-root"></div>
+      </section>
+    </main>
+
+    <div id="archiveViewer" class="archive-viewer hidden" aria-hidden="true">
+      <div class="archive-viewer-inner">
+        <div class="archive-viewer-stage" id="archiveViewerStage">
+          <div class="archive-viewer-canvas-wrap">
+            <img id="archiveViewerImg" class="archive-viewer-img" alt="" />
+            <div
+              id="archiveInspectLayer"
+              class="archive-inspect-layer hidden"
+              aria-hidden="true"
+            ></div>
+          </div>
+          <p class="archive-viewer-title" id="archiveViewerTitle"></p>
+        </div>
+        <footer class="archive-viewer-footer">
+          <button type="button" class="archive-viewer-btn" id="archiveBtnSave">save</button>
+          <button type="button" class="archive-viewer-btn" id="archiveBtnInspect">inspect</button>
+          <button type="button" class="archive-viewer-btn" id="archiveBtnClose">close</button>
+        </footer>
+      </div>
+    </div>
+
+    <div class="polaroid-overlay" id="polaroidOverlay" aria-hidden="true">
+      <div class="polaroid-modal-inner">
+        <div class="polaroid-wrap polaroid polaroid-modal" id="polaroidCard">
+          <div class="riso-grain"></div>
+          <div class="polaroid-inner">
+            <img class="frame-img" id="polaroidImg" alt="" width="280" height="280" />
+            <p class="caption" id="polaroidCaption"></p>
+          </div>
+        </div>
+        <div class="polaroid-actions">
+          <button type="button" class="polaroid-action polaroid-save" id="polaroidSave">save</button>
+          <button type="button" class="polaroid-action polaroid-close" id="polaroidDismiss">
+            close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="session-core.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
