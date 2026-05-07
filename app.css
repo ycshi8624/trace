@@ -1592,6 +1592,7 @@ body.session-on .residue-canvas {
   .view-search.page-landing {
     padding: 6px 10px max(20px, env(safe-area-inset-bottom));
     min-height: 100dvh;
+    overflow-x: clip;
   }
 
   .landing-main {
@@ -1606,31 +1607,55 @@ body.session-on .residue-canvas {
     min-height: min(26vh, 180px);
   }
 
+  /*
+   * Fluid keyboard: avoid width:max-content + repeat(10, auto), which keeps an
+   * intrinsic min-width wider than the viewport and ignores max-width.
+   */
   .search-keyboard-wrap {
-    padding: 0 6px;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: max(6px, env(safe-area-inset-left));
+    padding-right: max(6px, env(safe-area-inset-right));
+    box-sizing: border-box;
   }
 
-  .search-keyboard-stack,
-  .search-keyboard {
-    max-width: min(100vw - 12px, 520px);
+  .search-keyboard-stack {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .search-keyboard {
-    gap: clamp(10px, 3.2vw, 16px) clamp(14px, 3.8vw, 26px);
-    grid-template-rows: repeat(3, minmax(20px, auto));
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, auto));
+    gap: clamp(5px, 1.8vmin, 12px) clamp(3px, 1.4vmin, 10px);
+    justify-items: stretch;
+    align-items: stretch;
   }
 
   .search-slot {
-    max-width: 52px;
-    min-height: 52px;
-    padding: 5px;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: 1;
+    padding: clamp(2px, 1.2vmin, 6px);
+    box-sizing: border-box;
   }
 
   .search-typed-overflow {
+    width: 100%;
+    max-width: 100%;
     margin-top: 8px;
     padding: 5px 6px 7px;
     min-height: 20px;
-    max-width: min(100vw - 12px, 520px);
+    box-sizing: border-box;
   }
 
   .qwerty-caret-slot {
